@@ -3,6 +3,8 @@
  * http://isotope.metafizzy.co
  */
 
+/*jshint browser: true, strict: true, undef: true, unused: true */
+
 ( function( window ) {
 
 'use strict';
@@ -124,8 +126,8 @@ function masonryHorizontalDefinition( getSize, LayoutMode ) {
     };
   };
 
-  MasonryHorizontal.prototype.resize = function() {
-    this.resizeVertical();
+  MasonryHorizontal.prototype.needsResizeLayout = function() {
+    return this.needsVerticalResizeLayout();
   };
 
   return MasonryHorizontal;
