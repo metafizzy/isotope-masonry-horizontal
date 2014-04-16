@@ -57,7 +57,7 @@ function masonryHorizontalDefinition( getSize, LayoutMode ) {
     rowSpan = Math.min( rowSpan, this.rows );
 
     var rowGroup = this._getRowGroup( rowSpan );
-    // get the minimum Y value from the rows
+    // get the minimum X value from the rows
     var minimumX = Math.min.apply( Math, rowGroup );
     var shortRowIndex = indexOf( rowGroup, minimumX );
 
