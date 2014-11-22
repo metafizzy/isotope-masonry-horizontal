@@ -1,6 +1,6 @@
 # masonryHorizontal layout mode for Isotope
 
-See [docs for masonryHorizontal layout mode](http://isotope.metafizzy.co/beta/layout-modes/masonryhorizontal.html)
+See [docs for masonryHorizontal layout mode](http://isotope.metafizzy.co/layout-modes/masonryhorizontal.html)
 
 ``` js
 $('#container').isotope({
@@ -10,3 +10,7 @@ $('#container').isotope({
   }
 });
 ```
+
+## Install
+
+Install with [Bower](http://bower.io) `bower install isotope-masonry-horizontal`

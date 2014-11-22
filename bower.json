@@ -1,14 +1,14 @@
 {
   "name": "isotope-masonry-horizontal",
   "main": "masonry-horizontal.js",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "authors": [
     "David DeSandro"
   ],
   "description": "masonryHorizontal layout mode for Isotope",
   "dependencies": {
-    "get-size": "desandro/get-size#>=1 <2",
-    "isotope": ">=2.0.0-beta.9 <2.1"
+    "get-size": "1.x",
+    "isotope": "2.0.x"
   },
   "keywords": [
     "masonry",
