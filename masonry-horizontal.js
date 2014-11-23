@@ -1,6 +1,6 @@
 /*!
  * masonryHorizontal layout mode for Isotope
- * v1.0.0
+ * v1.1.0
  * http://isotope.metafizzy.co/layout-modes/masonryhorizontal.html
  */
 
@@ -142,6 +142,12 @@ if ( typeof define === 'function' && define.amd ) {
       'isotope/js/layout-mode'
     ],
     masonryHorizontalDefinition );
+} else if ( typeof exports === 'object' ) {
+  // CommonJS
+  module.exports = masonryHorizontalDefinition(
+    require('get-size'),
+    require('isotope-layout/js/layout-mode')
+  );
 } else {
   // browser global
   masonryHorizontalDefinition(

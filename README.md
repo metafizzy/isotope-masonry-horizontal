@@ -14,3 +14,5 @@ $('#container').isotope({
 ## Install
 
 Install with [Bower](http://bower.io) `bower install isotope-masonry-horizontal`
+
+[Install with npm](https://www.npmjs.org/package/isotope-masonry-horizontal): `npm install isotope-masonry-horizontal`
