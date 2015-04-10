@@ -1,34 +1,43 @@
 /*!
  * masonryHorizontal layout mode for Isotope
- * v1.1.0
+ * v1.1.1
  * http://isotope.metafizzy.co/layout-modes/masonryhorizontal.html
  */
 
 /*jshint browser: true, strict: true, undef: true, unused: true */
 
-( function( window ) {
+( function( window, factory ) {
+  'use strict';
+  // universal module definition
+  if ( typeof define === 'function' && define.amd ) {
+    // AMD
+    define( [
+        'get-size/get-size',
+        'isotope/js/layout-mode',
+        'fizzy-ui-utils/utils'
+      ],
+      factory );
+  } else if ( typeof exports === 'object' ) {
+    // CommonJS
+    module.exports = factory(
+      require('get-size'),
+      require('isotope-layout/js/layout-mode'),
+      require('fizzy-ui-utils')
+    );
+  } else {
+    // browser global
+    factory(
+      window.getSize,
+      window.Isotope.LayoutMode,
+      window.fizzyUIUtils
+    );
+  }
 
+}( window, function factory( getSize, LayoutMode, utils ) {
 'use strict';
-
-// -------------------------- helpers -------------------------- //
-
-var indexOf = Array.prototype.indexOf ?
-  function( items, value ) {
-    return items.indexOf( value );
-  } :
-  function ( items, value ) {
-    for ( var i=0, len = items.length; i < len; i++ ) {
-      var item = items[i];
-      if ( item === value ) {
-        return i;
-      }
-    }
-    return -1;
-  };
 
 // -------------------------- definition -------------------------- //
 
-function masonryHorizontalDefinition( getSize, LayoutMode ) {
   // create an Outlayer layout class
   var MasonryHorizontal = LayoutMode.create('masonryHorizontal');
 
@@ -60,7 +69,7 @@ function masonryHorizontalDefinition( getSize, LayoutMode ) {
     var rowGroup = this._getRowGroup( rowSpan );
     // get the minimum X value from the rows
     var minimumX = Math.min.apply( Math, rowGroup );
-    var shortRowIndex = indexOf( rowGroup, minimumX );
+    var shortRowIndex = utils.indexOf( rowGroup, minimumX );
 
     // position the brick
     var position = {
@@ -133,27 +142,4 @@ function masonryHorizontalDefinition( getSize, LayoutMode ) {
 
   return MasonryHorizontal;
 
-}
-
-if ( typeof define === 'function' && define.amd ) {
-  // AMD
-  define( [
-      'get-size/get-size',
-      'isotope/js/layout-mode'
-    ],
-    masonryHorizontalDefinition );
-} else if ( typeof exports === 'object' ) {
-  // CommonJS
-  module.exports = masonryHorizontalDefinition(
-    require('get-size'),
-    require('isotope-layout/js/layout-mode')
-  );
-} else {
-  // browser global
-  masonryHorizontalDefinition(
-    window.getSize,
-    window.Isotope.LayoutMode
-  );
-}
-
-})( window );
+}));
