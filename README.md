@@ -3,7 +3,7 @@
 See [docs for masonryHorizontal layout mode](http://isotope.metafizzy.co/layout-modes/masonryhorizontal.html)
 
 ``` js
-$('#container').isotope({
+$('.grid').isotope({
   layoutMode: 'masonryHorizontal',
   masonryHorizontal: {
     rowHeight: 200

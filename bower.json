@@ -1,15 +1,13 @@
 {
   "name": "isotope-masonry-horizontal",
   "main": "masonry-horizontal.js",
-  "version": "1.1.1",
   "authors": [
     "Metafizzy"
   ],
   "description": "masonryHorizontal layout mode for Isotope",
   "dependencies": {
-    "get-size": "~1.2.2",
-    "isotope": ">=2.1.0 <2.3.0",
-    "fizzy-ui-utils": "~1.0.0"
+    "get-size": "^2.0.2",
+    "isotope": "^3.0.0"
   },
   "keywords": [
     "masonry",

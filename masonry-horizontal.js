@@ -1,6 +1,6 @@
 /*!
  * masonryHorizontal layout mode for Isotope
- * v1.1.1
+ * v2.0.0
  * http://isotope.metafizzy.co/layout-modes/masonryhorizontal.html
  */
 
@@ -13,35 +13,33 @@
     // AMD
     define( [
         'get-size/get-size',
-        'isotope/js/layout-mode',
-        'fizzy-ui-utils/utils'
+        'isotope/js/layout-mode'
       ],
       factory );
   } else if ( typeof exports === 'object' ) {
     // CommonJS
     module.exports = factory(
       require('get-size'),
-      require('isotope-layout/js/layout-mode'),
-      require('fizzy-ui-utils')
+      require('isotope-layout/js/layout-mode')
     );
   } else {
     // browser global
     factory(
       window.getSize,
-      window.Isotope.LayoutMode,
-      window.fizzyUIUtils
+      window.Isotope.LayoutMode
     );
   }
 
-}( window, function factory( getSize, LayoutMode, utils ) {
+}( window, function factory( getSize, LayoutMode ) {
 'use strict';
 
 // -------------------------- definition -------------------------- //
 
   // create an Outlayer layout class
   var MasonryHorizontal = LayoutMode.create('masonryHorizontal');
+  var proto = MasonryHorizontal.prototype;
 
-  MasonryHorizontal.prototype._resetLayout = function() {
+  proto._resetLayout = function() {
     this.getRowHeight();
     this._getMeasurement( 'gutter', 'outerHeight' );
 
@@ -60,16 +58,19 @@
     this.maxX = 0;
   };
 
-  MasonryHorizontal.prototype._getItemLayoutPosition = function( item ) {
+  proto._getItemLayoutPosition = function( item ) {
     item.getSize();
     // how many rows does this brick span
-    var rowSpan = Math.ceil( item.size.outerHeight / this.rowHeight );
+    var remainder = item.size.outerHeight % this.rowHeight;
+    var mathMethod = remainder && remainder < 1 ? 'round' : 'ceil';
+    // round if off by 1 pixel, otherwise use ceil
+    var rowSpan = Math[ mathMethod ]( item.size.outerHeight / this.rowHeight );
     rowSpan = Math.min( rowSpan, this.rows );
 
     var rowGroup = this._getRowGroup( rowSpan );
     // get the minimum X value from the rows
     var minimumX = Math.min.apply( Math, rowGroup );
-    var shortRowIndex = utils.indexOf( rowGroup, minimumX );
+    var shortRowIndex = rowGroup.indexOf( minimumX );
 
     // position the brick
     var position = {
@@ -91,7 +92,7 @@
    * @param {Number} rowSpan - number of rows the element spans
    * @returns {Array} rowGroup
    */
-  MasonryHorizontal.prototype._getRowGroup = function( rowSpan ) {
+  proto._getRowGroup = function( rowSpan ) {
     if ( rowSpan < 2 ) {
       // if brick spans only one row, use all the row Xs
       return this.rowXs;
@@ -110,25 +111,25 @@
     return rowGroup;
   };
 
-  MasonryHorizontal.prototype._manageStamp = function( stamp ) {
+  proto._manageStamp = function( stamp ) {
     var stampSize = getSize( stamp );
     var offset = this.isotope._getElementOffset( stamp );
     // get the rows that this stamp affects
-    var firstY = this.isotope.options.isOriginTop ? offset.top : offset.bottom;
+    var firstY = this._getOption('originTop') ? offset.top : offset.bottom;
     var lastY = firstY + stampSize.outerHeight;
     var firstRow = Math.floor( firstY / this.rowHeight );
     firstRow = Math.max( 0, firstRow );
     var lastRow = Math.floor( lastY / this.rowHeight );
     lastRow = Math.min( this.rows - 1, lastRow );
     // set rowXs to outside edge of the stamp
-    var stampMaxX = ( this.isotope.options.isOriginLeft ? offset.left : offset.right ) +
+    var stampMaxX = ( this._getOption('originLeft') ? offset.left : offset.right ) +
       stampSize.outerWidth;
     for ( var i = firstRow; i <= lastRow; i++ ) {
       this.rowXs[i] = Math.max( stampMaxX, this.rowXs[i] );
     }
   };
 
-  MasonryHorizontal.prototype._getContainerSize = function() {
+  proto._getContainerSize = function() {
     this.maxX = Math.max.apply( Math, this.rowXs );
 
     return {
@@ -136,7 +137,7 @@
     };
   };
 
-  MasonryHorizontal.prototype.needsResizeLayout = function() {
+  proto.needsResizeLayout = function() {
     return this.needsVerticalResizeLayout();
   };
 

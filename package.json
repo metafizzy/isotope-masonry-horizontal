@@ -1,12 +1,11 @@
 {
   "name": "isotope-masonry-horizontal",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "masonryHorizontal layout mode for Isotope",
   "main": "masonry-horizontal.js",
   "dependencies": {
-    "get-size": "~1.2.2",
-    "isotope-layout": ">=2.1.0 <2.3.0",
-    "fizzy-ui-utils": "~1.0.0"
+    "get-size": "^2.0.2",
+    "isotope-layout": "^3.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
