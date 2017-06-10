@@ -13,7 +13,7 @@
     // AMD
     define( [
         'get-size/get-size',
-        'isotope/js/layout-mode'
+        'isotope-layout/js/layout-mode'
       ],
       factory );
   } else if ( typeof module == 'object' && module.exports ) {
