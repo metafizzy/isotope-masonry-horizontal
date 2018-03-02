@@ -1,7 +1,7 @@
 /*!
  * masonryHorizontal layout mode for Isotope
- * v2.0.0
- * http://isotope.metafizzy.co/layout-modes/masonryhorizontal.html
+ * v2.0.1
+ * https://isotope.metafizzy.co/layout-modes/masonryhorizontal.html
  */
 
 /*jshint browser: true, strict: true, undef: true, unused: true */

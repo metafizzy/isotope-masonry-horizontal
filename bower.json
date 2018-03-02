@@ -2,12 +2,12 @@
   "name": "isotope-masonry-horizontal",
   "main": "masonry-horizontal.js",
   "authors": [
-    "Metafizzy"
+    "David DeSandro"
   ],
   "description": "masonryHorizontal layout mode for Isotope",
   "dependencies": {
     "get-size": "^2.0.2",
-    "isotope": "^3.0.0"
+    "isotope-layout": "^3.0.0"
   },
   "keywords": [
     "masonry",
@@ -16,7 +16,7 @@
     "isotope-layout-mode",
     "isotope"
   ],
-  "homepage": "http://isotope.metafizzy.co/layout-modes/masonryhorizontal.html",
+  "homepage": "https://isotope.metafizzy.co/layout-modes/masonryhorizontal.html",
   "moduleType": [
     "amd",
     "globals",

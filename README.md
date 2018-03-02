@@ -1,6 +1,6 @@
 # masonryHorizontal layout mode for Isotope
 
-See [docs for masonryHorizontal layout mode](http://isotope.metafizzy.co/layout-modes/masonryhorizontal.html)
+See [docs for masonryHorizontal layout mode](https://isotope.metafizzy.co/layout-modes/masonryhorizontal.html)
 
 ``` js
 $('.grid').isotope({
